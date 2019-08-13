@@ -19,4 +19,21 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
+phone_time = {}
 
+for record in calls:
+    first_number, second_number, time = record[0], record[1], float(record[-1])
+
+    if first_number not in phone_time:
+        phone_time[first_number] = time
+    else:
+        phone_time[first_number] += time
+
+    if second_number not in phone_time:
+        phone_time[second_number] = time
+    else:
+        phone_time[second_number] += time
+
+true_phone_lover = max(phone_time, key=lambda key: phone_time[key])
+
+print(f'{true_phone_lover} spent the longest time, {phone_time[true_phone_lover]} seconds, on the phone during September 2016.')
