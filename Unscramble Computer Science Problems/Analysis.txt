@@ -1,0 +1,16 @@
+NOTE: the following runtime analysis has disregarded the codes that read the csv files. For now I consider only the code I've written.
+
+Task 0:
+The big O notation of my solution would be O(1). Since there are only two lines of codes without any loop.
+
+Task 1:
+The list concatenation operation could cost some running resource, as well as the for loop. Since they both run only once, so the big O notation of the code should be O(n). 
+
+Task 2:
+There is a for loop in my solution. Within the for loop there are two "if ... not in ..." statements, and I assume python is acutally doing a loop over the list when running the "if ... not in ..." statement. So in fact there is a nested loop, and therefore the big O notation should be O(n*n) (n square).
+
+Task 3:
+There is no nested loops, so I think the big O notation of my solution for this task is O(n).
+
+Task 4:
+Similar to Task 2, there is nested loops in my solution. So I think the big O notation of my solution for this task is O(n*n) (n square).

@@ -21,10 +21,10 @@ Print a message:
 unique_numbers = []
 
 for record in texts + calls:
-    first_number, second_number = record[0], record[1]
-    if first_number not in unique_numbers:
-        unique_numbers.append(first_number)
-    if second_number not in unique_numbers:
-        unique_numbers.append(second_number)
+    sender, recipient = record[0], record[1]
+    if sender not in unique_numbers:
+        unique_numbers.append(sender)
+    if recipient not in unique_numbers:
+        unique_numbers.append(recipient)
 
 print(f'There are {len(unique_numbers)} different telephone numbers in the records.')

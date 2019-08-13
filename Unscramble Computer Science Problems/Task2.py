@@ -22,17 +22,17 @@ September 2016.".
 phone_time = {}
 
 for record in calls:
-    first_number, second_number, time = record[0], record[1], float(record[-1])
+    caller, called_number, time = record[0], record[1], float(record[-1])
 
-    if first_number not in phone_time:
-        phone_time[first_number] = time
+    if caller not in phone_time:
+        phone_time[caller] = time
     else:
-        phone_time[first_number] += time
+        phone_time[caller] += time
 
-    if second_number not in phone_time:
-        phone_time[second_number] = time
+    if called_number not in phone_time:
+        phone_time[called_number] = time
     else:
-        phone_time[second_number] += time
+        phone_time[called_number] += time
 
 true_phone_lover = max(phone_time, key=lambda key: phone_time[key])
 

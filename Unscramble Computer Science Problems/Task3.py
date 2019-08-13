@@ -71,6 +71,7 @@ def find_records_by_area(calls, area='Bangalore'):
 
     return records_to_find
 
+
 # Define a function to check if the number is a fix line
 def isfixline(number):
     """
@@ -84,8 +85,23 @@ def isfixline(number):
         return True
     return False
 
+
 # Define a function to check if the number is a mobile phone
 def ismobile(number):
+    """
+    Telemarketers' numbers have no parentheses or space, but they start
+    with the area code 140.
+
+    :param number: string of numbers
+    :return: boolean, true if the given number is a telemarketer.
+    """
+    if number[0] in ['7', '8', '9']:
+        return True
+    return False
+
+
+# Define a function to check if the number is a telemarketer
+def istele(number):
     """
     Mobile numbers have no parentheses, but have a space in the middle
     of the number to help readability. The prefix of a mobile number
@@ -94,9 +110,10 @@ def ismobile(number):
     :param number: string of numbers
     :return: boolean, true if the given number is a mobile number.
     """
-    if number[0] in ['7', '8', '9']:
+    if number[:3] == '140':
         return True
     return False
+
 
 if __name__ == '__main__':
 
@@ -114,6 +131,8 @@ if __name__ == '__main__':
         elif ismobile(called_number):
             prefix = called_number[:4]
             codes_to_find.append(prefix)
+        elif istele(called_number):
+            codes_to_find.append('140')
 
     codes_to_find.sort()
     print('The numbers called by people in Bangalore have codes:')
