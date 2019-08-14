@@ -4,13 +4,13 @@ Task 0:
 The big O notation of my solution would be O(1). Since there are only two lines of codes without any loop.
 
 Task 1:
-The list concatenation operation could cost some running resource, as well as the for loop. Since they both run only once, so the big O notation of the code should be O(n). 
+As mentioned by the reviewer, the containment operation of python list has a time complexity of O(n). So in my current solution, the code will potentially loop over the list again within each iteration of the outer for loop, and that leads to the quadratic time complexity of the entire program.
 
 Task 2:
 There is a for loop in my solution. Within the for loop there are two "if ... not in ..." statements, and I assume python is acutally doing a loop over the list when running the "if ... not in ..." statement. So in fact there is a nested loop, and therefore the big O notation should be O(n*n) (n square).
 
 Task 3:
-There is no nested loops, so I think the big O notation of my solution for this task is O(n).
+The two for loops have a O(n) time complexity. However, the python built-in sorted() function as a O(n log n) complexity, which is worse than O(n). Therefore it should dominate the runtime of this program. In summary, the time complexity of this solution is O(n log n).
 
 Task 4:
-Similar to Task 2, there is nested loops in my solution. So I think the big O notation of my solution for this task is O(n*n) (n square).
+Similar to Task 3, there exists for loops with O(n) complexity and sorted() function with O(n log n) complexity. So the time complexity of this solution should be O(n log n).

@@ -52,7 +52,7 @@ def find_records_by_area(calls, area='Bangalore'):
     :param calls: list of call records
     :param area: string, specify the call area, default Bangalore for this task.
 
-    :return records_to_find: list of call records made by people in a certain area
+    :return records_to_find: set of call records made by people in a certain area
     """
 
     records_to_find = []
@@ -120,21 +120,21 @@ if __name__ == '__main__':
     calls_from_bangalore = find_records_by_area(calls, area='Bangalore')
 
     """Part A"""
-    codes_to_find = []
+    codes_to_find = set()
 
     for record in calls_from_bangalore:
         called_number = record[1]
 
         if isfixline(called_number):
             prefix = called_number.split(')')[0][1:]
-            codes_to_find.append(prefix)
+            codes_to_find.add(prefix)
         elif ismobile(called_number):
             prefix = called_number[:4]
-            codes_to_find.append(prefix)
+            codes_to_find.add(prefix)
         elif istele(called_number):
-            codes_to_find.append('140')
+            codes_to_find.add('140')
 
-    codes_to_find.sort()
+    codes_to_find = sorted(codes_to_find)
     print('The numbers called by people in Bangalore have codes:')
     for code in codes_to_find:
         print(code)

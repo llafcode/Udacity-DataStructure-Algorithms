@@ -27,30 +27,24 @@ The list of numbers should be print out one per line in lexicographic order with
 
 
 if __name__ == '__main__':
-    numbers_with_texts = []
-    numbers_receive_calls = []
-    numbers_make_calls = []
+    numbers_with_texts_receive_calls = set()
+    numbers_make_calls = set()
 
-    suspect_telemarketers = []
+    suspect_telemarketers = set()
 
     for record in texts:
         sender, recipient = record[0], record[1]
-        if sender not in numbers_with_texts:
-            numbers_with_texts.append(sender)
-        if recipient not in numbers_with_texts:
-            numbers_with_texts.append(recipient)
+
+        numbers_with_texts_receive_calls.add(sender)
+        numbers_with_texts_receive_calls.add(recipient)
 
     for record in calls:
         caller, called = record[0], record[1]
 
-        if caller not in numbers_make_calls:
-            numbers_make_calls.append(caller)
-        if called not in numbers_receive_calls:
-            numbers_receive_calls.append(called)
+        numbers_make_calls.add(caller)
+        numbers_with_texts_receive_calls.add(called)
 
-    for number in numbers_make_calls:
-        if number not in numbers_with_texts and number not in numbers_receive_calls:
-            suspect_telemarketers.append(number)
+    suspect_telemarketers = sorted(numbers_make_calls.difference(numbers_with_texts_receive_calls))
 
     print('These numbers could be telemarketers: ')
     for number in suspect_telemarketers:
